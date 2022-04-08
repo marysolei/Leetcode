@@ -24,7 +24,7 @@ class Solution {
         //standard bfs
         while(!queue.isEmpty()){
             int size = queue.size();
-            level++;
+            
             for(int i=0; i< size ; i++) {
                 
                 int[] curr = queue.poll();
@@ -37,6 +37,7 @@ class Solution {
                 }
             }
             }
+            level++;
         }
         return level-1;
     }
