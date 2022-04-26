@@ -26,9 +26,9 @@
  *     public List<NestedInteger> getList();
  * }
  */
-class Solution {
+//DFS solution
+/*class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
-        
         return dfs(nestedList, 1);
     }
     public int dfs (List<NestedInteger> list, int depth){
@@ -43,4 +43,32 @@ class Solution {
         }
         return total;
     }
+}*/
+
+//BFS solution
+class Solution {
+    public int depthSum(List<NestedInteger> nestedList) {
+        
+        Queue<NestedInteger> queue = new ArrayDeque<>();
+        queue.addAll(nestedList);
+        
+        int total = 0;
+        int depth = 1;
+        
+        while(!queue.isEmpty()){
+            
+            int size = queue.size();
+            for(int i=0; i< size; i++){
+                NestedInteger curr = queue.poll();
+                if(curr.isInteger()){
+                    total+= curr.getInteger() * depth;
+                }else {
+                    queue.addAll(curr.getList());
+                }
+            }
+            depth++;
+        }
+        return total;
+    }
 }
+//Time and space complexity O(n) for both dfs and bfs solution where n is the total number of nested elements in the input
