@@ -18,3 +18,4 @@ class Solution {
         return num.equals(rotated.toString());
     }
 }
+//Time and space complexity of O(n) where n is the length of input
