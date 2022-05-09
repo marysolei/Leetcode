@@ -1,6 +1,8 @@
 class Solution {
     public int maxNumberOfFamilies(int n, int[][] reservedSeats) {
-        
+        // First possibility: Split seating at  [2, 3     4, 5]
+        // Second possibility: Split seating at [6, 7     8, 9]
+        // Only possibility:  Center four seats [  4, 5, 6, 7 ]
         int len = reservedSeats.length; 
         HashMap<Integer, HashSet<Integer>> hmap = new HashMap<>();
         for(int[] seat : reservedSeats) {
