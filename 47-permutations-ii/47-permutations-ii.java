@@ -26,10 +26,7 @@ class Solution {
                 helper(nums, curr, set, visited);
                 curr.remove(curr.size()-1);
                 visited[i]= false;
-            }
-            
-            
-            
+            } 
         }
     }
 }
