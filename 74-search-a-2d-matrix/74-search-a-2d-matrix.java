@@ -7,12 +7,13 @@ class Solution {
         int cols = matrix[0].length;
         int left = 0;
         int right = rows*cols-1;
-        while(left <= right){
-            int index = left +(right-left)/2;
-            int mid = matrix[index/cols][index%cols];
-            if(mid == target) return true; 
-            else if(mid < target) left= index+1;
-            else right= index-1;
+        
+        while(left<=right){
+            int midIndex = left+(right-left);
+            int midValue = matrix[midIndex/cols][midIndex%cols];
+            if(midValue == target) return true;
+            else if(midValue < target) left = midIndex+1;
+            else right = midIndex-1;
         }
         return false;
     }
