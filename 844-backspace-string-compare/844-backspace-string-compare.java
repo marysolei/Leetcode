@@ -1,20 +1,17 @@
 class Solution {
-    public boolean backspaceCompare(String S, String T) {
+    public boolean backspaceCompare(String s, String t) {
         
-        Stack<Character> sStack = stringToStack(S);
-        Stack<Character> tStack = stringToStack(T);
+        if(s == null || t== null)return s==t;
+        Stack<Character> stackS = stackfill(s);
+        Stack<Character> stackT = stackfill(t);
         
-        while(!sStack.isEmpty()) {
-            char c = sStack.pop();
-            if (tStack.isEmpty() || c != tStack.pop() ) {
-                return false;
-            }
+        while(!stackS.isEmpty()){
+            char c = stackS.pop();
+            if(stackT.isEmpty() || c != stackT.pop()) return false;
         }
-        return sStack.isEmpty()&& tStack.isEmpty();
+        return stackS.isEmpty() && stackT.isEmpty();
     }
-    
-    public Stack<Character> stringToStack (String s) {
-        
+    public Stack<Character> stackfill(String s){
         Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
             if (c != '#') {
