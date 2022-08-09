@@ -18,25 +18,21 @@ class Solution {
         
         List<Integer> result = new ArrayList<>();
         //check for null input
-        if(root == null)return result;
-        //bfs queue
+        if(root == null) return result;
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
         
         while(!queue.isEmpty()){
             int size = queue.size();
-            for(int i=0; i<size; i++){
+            for(int i=0;i<size; i++){
+                //check curr node
                 TreeNode curr = queue.poll();
-                //get the rightmost node in this level
-                if(i==size-1) result.add(curr.val);
-                //check the children and add them to the queue
-                if(curr.left != null) queue.add(curr.left);
+                if(i == size-1) result.add(curr.val);
+                //check children
+                if(curr.left!= null) queue.add(curr.left);
                 if(curr.right != null) queue.add(curr.right);
             }
         }
         return result;
     }
 }
-
-//Time complexity: O(n) we need to visit each node
-//space complexity: O(d) where d is the tree diameter, O(n) worst case scenario
