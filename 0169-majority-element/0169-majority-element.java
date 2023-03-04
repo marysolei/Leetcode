@@ -1,15 +1,11 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        
-        int count = 0;
-        Integer candidate = null;
+        int cnt =0;
+        int candidate = 0;
         for(int num : nums){
-            if(count == 0) candidate = num;
-            if(candidate== num) count++; 
-            else count--;
+            if(cnt == 0) candidate = num;
+            cnt += (candidate ==num)? 1:-1;
         }
         return candidate;
     }
 }
-//Time complexity: O(n)
-//space complexity: O(1)
