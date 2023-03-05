@@ -15,10 +15,7 @@
  */
 class Solution {
     public int maxDepth(TreeNode root) {
-        if(root == null)return 0;
+        if(root == null) return 0;
         return Math.max(maxDepth(root.left), maxDepth(root.right))+1;
     }
 }
-
-//Time complexity: O(n) we visit each node exactly once
-//Space complexity: O(n) in worst case and O(logn) in average 
