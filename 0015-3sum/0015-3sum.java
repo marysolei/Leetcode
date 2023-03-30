@@ -2,40 +2,31 @@ class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         
         Arrays.sort(nums);
-        List<List<Integer>> res = new ArrayList<>();
-        for(int i=0; i<nums.length && nums[i]<=0 ; i++){
-            if(i==0 || nums[i-1]!= nums[i]){
-                twoSum(nums, i, res);
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i=0;i< nums.length; i++){
+            // Since nums[i] <= nums[left] <= nums[right], if nums[i] > 0 then sum=nums[i]+nums[left]+nums[right] > 0
+            if(nums[i]>0) break;
+            int left =i+1;
+            int right = nums.length-1;
+            while(left<right){
+                int sum = nums[i]+ nums[left]+ nums[right];
+                if(sum>0) right--;
+                else if(sum<0) left++;
+                else {
+                    result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    while(left+1 <= right && nums[left]== nums[left+1])left++; //skip duplicates
+                    left++;
+                    right--;
+                }
+                
             }
+            while(i+1< nums.length && nums[i+1] == nums[i]) i++; //skip duplicate nums[i]
         }
-        return res;
+        return result;
     }
-    void twoSum (int[] nums, int i, List<List<Integer>> res){
-        var seen = new HashSet<Integer>();
-        for(int j= i+1; j<nums.length; j++){
-            int cmp = -nums[i]-nums[j];
-            if(seen.contains(cmp)){
-                res.add(Arrays.asList(nums[i], nums[j], cmp));
-                while(j+1<nums.length && nums[j] == nums[j+1]) j++;
-            }
-            seen.add(nums[j]);
-        }
-    } 
 }
 
-/*For the main function:
 
-Sort the input array nums.
-Iterate through the array:
-If the current value is greater than zero, break from the loop. Remaining values cannot sum to zero.
-If the current value is the same as the one before, skip it.
-Otherwise, call twoSum for the current position i.
-
-For twoSum function:
-For each index j > i in A:
-Compute complement value as -nums[i] - nums[j].
-If complement exists in hashset seen:
-We found a triplet - add it to the result res.
-Increment j while the next value is the same as before to avoid duplicates in the result.
-Add nums[j] to hashset seen
-*/
+/*Sort nums in increasing order.
+Fix nums[i] by itearting i in [0..n-1]
+Two pointers in range [i+1..n-1] to find nums[l] and nums[r] so that nums[i] + nums[l] + nums[r] = 0 But, remember to skip duplicate elements as well.*/
