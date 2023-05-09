@@ -15,18 +15,15 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        
-        List<Integer> result = new ArrayList<>();
-        if(root == null)return result;
-        helper(root, result);
-        return result;
+        List<Integer> res = new ArrayList<>();
+        if(root == null)return res;
+        helper(root, res);
+        return res;
     }
-    public void helper(TreeNode root, List<Integer> result){
-        if(root == null) return;
-        helper(root.left, result);
-        result.add(root.val);
-        helper(root.right, result);
+    public void helper(TreeNode root, List<Integer> res){
+        if(root == null)return;
+        helper(root.left, res);
+        res.add(root.val);
+        helper(root.right, res);
     }
 }
-
-//Time and Space complexity: O(n)
