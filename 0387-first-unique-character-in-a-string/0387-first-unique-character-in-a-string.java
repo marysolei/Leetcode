@@ -12,4 +12,4 @@ class Solution {
         return -1;
     }
 }
-//time and space complexity:O(1)
+//time and space complexity:O(n)
