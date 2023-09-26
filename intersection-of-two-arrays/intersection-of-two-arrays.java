@@ -3,19 +3,13 @@ class Solution {
         
         //check for null input 
         if(nums1 == null || nums2 == null)return null;
-        HashSet<Integer> duplicateSet = new HashSet<>();
-        HashSet<Integer> res = new HashSet<>();
-        for(int num : nums1) duplicateSet.add(num);
-        for(int num : nums2){
-            if(duplicateSet.contains(num)){
-                res.add(num);
-            }
-        }
-        int[] result = new int[res.size()];
+        HashSet<Integer> hset1 = new HashSet<>();
+         HashSet<Integer> preRes = new HashSet<>();
+        for(int num : nums1)hset1.add(num);
+        for(int num : nums2)if(hset1.contains(num)) preRes.add(num);
+        int[] res = new int[preRes.size()];
         int index =0;
-        for(int num : res){
-            result[index++] = num;
-        }
-        return result;
+        for (int num: preRes) res[index++] = num;
+        return res;
     }
 }
