@@ -1,15 +1,15 @@
 class Solution {
     public int numJewelsInStones(String jewels, String stones) {
-        
         //check for null input 
-        if(jewels == null || stones == null) return 0;
-        HashSet<Character> jewelSet = new HashSet<>();
+        if(jewels == null || stones == null)return 0;
         int res =0;
-        for (char j : jewels.toCharArray()) jewelSet.add(j);
-        for(char stone: stones.toCharArray()){
-            if(jewelSet.contains(stone)) res++;
+        HashSet<Character> jewelSet = new HashSet<>();
+        for(char j: jewels.toCharArray()) jewelSet.add(j);
+        for(char s: stones.toCharArray()){
+            if(jewelSet.contains(s)) res++;
         }
         return res;
     }
 }
-//Time and Space complexity: O(n)
+//Time complexity:Max(J, S)
+//space complexity: J
