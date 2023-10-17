@@ -1,20 +1,20 @@
 class Solution {
     public int dominantIndex(int[] nums) {
-        
-        if(nums == null || nums.length ==0)return -1;
-        int maxNum= 0;
-        int maxIndex = -1;
-        for(int i=0;i<nums.length; i++) {
-            if(nums[i]> maxNum){
-                maxNum = nums[i];
-                maxIndex = i;
+        //check for null input
+        if(nums == null || nums.length==0)return -1;
+        int currMax = 0;
+        int indexMax = -1;
+        for(int i=0;i<nums.length; i++){
+            if(currMax<nums[i]){
+                currMax = nums[i];
+                indexMax = i;
             }
         }
         for(int num: nums){
-            if(num != maxNum){
-                if(num*2> maxNum)return -1;
+               if(num != currMax) {
+                   if(num*2> currMax) return -1;
+               }
             }
-        }
-        return maxIndex;
+        return indexMax;
     }
 }
