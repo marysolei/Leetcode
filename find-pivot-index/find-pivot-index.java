@@ -1,12 +1,12 @@
 class Solution {
     public int pivotIndex(int[] nums) {
-        //check for null input 
-        if(nums == null) return -1;
+        //check for null input
+        if(nums == null || nums.length ==0)return -1;
         int totalSum = 0;
-        int currSum =0;
-        for (int num : nums) totalSum += num;
-        for(int i=0;i<nums.length; i++){
-            if(currSum == totalSum-currSum- nums[i]) return i;
+        int currSum = 0;
+        for (int num : nums)totalSum += num;
+        for(int i=0; i< nums.length; i++){
+            if (totalSum - currSum - nums[i] == currSum) return i;
             currSum += nums[i];
         }
         return -1;
