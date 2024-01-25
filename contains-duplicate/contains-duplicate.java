@@ -1,15 +1,13 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        
         //check for null input 
-        if(nums == null)return false;
-        HashSet<Integer> hset = new HashSet<>();
-        for (int num: nums) {
-            if(hset.contains(num)) return true;
-            hset.add(num);
+        if(nums == null || nums.length ==0)return false;
+        HashSet<Integer> numSet = new HashSet<>();
+        for(int num: nums){
+            if(numSet.contains(num)) return true;
+            numSet.add(num);
         }
         return false;
     }
 }
-
-//Time and Space complexity:O(n)
+//time and space complexity: O(n)
