@@ -1,14 +1,12 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         #check for null input 
-        if not nums: return nums
+        if nums is None: return nums
         hmap = {}
-        
         for i in range(len(nums)):
-            hmap[nums[i]]=i
-        for i in range(len(nums)):
-            complement = target-nums[i]
-            if complement in hmap and i != hmap[complement]:
-                return[i, hmap[complement]]
+            if(nums[i] in hmap and hmap[nums[i]] !=i):
+                return {hmap[nums[i]],i}
+            hmap[target-nums[i]]= i
+        return{}
     
 #time and space complexity: O(n)
