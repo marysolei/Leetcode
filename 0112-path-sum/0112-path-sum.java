@@ -15,9 +15,11 @@
  */
 class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        if(root == null)return false;
-        if(root.val == targetSum && root.left == null && root.right == null) return true;
-        return hasPathSum(root.left, targetSum-root.val) || 
-            hasPathSum(root.right, targetSum-root.val);
+        if (root == null)return false;
+        if (root.val == targetSum && root.left== null && root.right == null)return true;
+        return hasPathSum(root.left, targetSum-root.val) || hasPathSum(root.right, targetSum- root.val);
     }
 }
+
+//Time complexity: O(n)
+//space complexity: O(n) worstcase and if it is a balanced tree O(logn)
