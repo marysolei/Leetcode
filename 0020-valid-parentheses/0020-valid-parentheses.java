@@ -1,19 +1,20 @@
 class Solution {
     public boolean isValid(String s) {
-        
-        if(s== null || s.length()<=1) return false;
-        HashMap<Character, Character> hmap = new HashMap<>();
-        Stack<Character> stack = new Stack<>();
-        hmap.put('(',')');
-        hmap.put('{','}');
-        hmap.put('[',']');
-        for(char c : s.toCharArray()){
-            if(c == '{' || c== '(' || c =='[') stack.push(hmap.get(c));
-            else {
-                if(stack.isEmpty() || stack.pop() != c )  return false;
-                  }
+        if(s == null || s.length() ==0) return false;
+        Stack<Character> parenStack = new Stack<>();
+        HashMap<Character, Character> parenMap = new HashMap<>();
+        parenMap.put('(',')');
+        parenMap.put('{','}');
+        parenMap.put('[',']');
+        for(char c: s.toCharArray()){
+            if(c =='(' || c=='{' || c== '['){
+                parenStack.push(parenMap.get(c));
+            }else{
+                if(parenStack.isEmpty() || parenStack.pop() !=c)
+                   return false;
+            }
         }
-         return stack.size() ==0;
+        return parenStack.size() ==0;
     }
 }
 //Time and space complexity: O(n) where n is the number of chars in s
